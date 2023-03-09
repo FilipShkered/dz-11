@@ -21,17 +21,17 @@ class Student {
 }
 
 class Group {
-  _students = [];
+  #students = [];
 
+
+  get students() {
+    return this.#students;
+  }
 
   addStudent(student) {
     if (student instanceof Student) {
-      this._students.push(student);
+      this.#students.push(student);
     }
-  }
-
-  get students() {
-    return this._students;
   }
 
 
@@ -41,14 +41,14 @@ class Group {
 
   getAverageMark() {
     const sum = this.getAverageMarksSum();
-    const AverageMark = sum / this._students.length;
+    const AverageMark = sum / this.#students.length;
     return AverageMark;
   }
 
   getAverageMarksSum() {
     let AverageMarksSum = 0;
-    for (let i = 0; i < this._students.length; i++) {
-      const student = this._students[i];
+    for (let i = 0; i < this.#students.length; i++) {
+      const student = this.#students[i];
       { AverageMarksSum += student.getAverageMark();
       }
     }
